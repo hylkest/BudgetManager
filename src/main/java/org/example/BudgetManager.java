@@ -23,4 +23,14 @@ public class BudgetManager {
         }
         return balance;
     }
+
+    public void printTransactionsByCategory(String category) {
+        for (Transaction t : transactions) {
+            if (t.getCategory().equals(category)) {
+                System.out.println(t);
+            } else {
+                System.out.println("No category found");
+            }
+        }
+    }
 }
