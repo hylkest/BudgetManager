@@ -13,5 +13,7 @@ public class Main {
         manager.removeTransaction("Boodschappen", 10);
 
         manager.printTransactions();
+
+        manager.saveTransactions();
     }
 }

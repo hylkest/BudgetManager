@@ -1,6 +1,9 @@
 package org.example;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.BufferedWriter;
+import java.io.IOException;
 
 
 public class BudgetManager {
@@ -51,5 +54,23 @@ public class BudgetManager {
 
     public void setBudgetLimit(double limit) {
         this.budgetLimit = limit;
+    }
+
+    public void saveTransactions() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("transactions.txt"))) {
+            for (Transaction t : transactions) {
+                writer.write(t.getDate() + " | " + t.getCategory() + " | " + t.getAmount() + " | " + t.getDescription());
+                writer.newLine();
+            }
+            System.out.println("Transacties opgeslagen!");
+        } catch (IOException e) {
+            System.err.println("Fout bij opslaan van transacties: " + e.getMessage());
+        }
+    }
+
+    public void loadTransactions() {
+        for (Transaction t : transactions) {
+            
+        }
     }
 }
