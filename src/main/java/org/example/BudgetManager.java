@@ -70,7 +70,7 @@ public class BudgetManager {
 
     public void loadTransactions() {
         for (Transaction t : transactions) {
-            
+
         }
     }
 }
