@@ -28,4 +28,4 @@ With this tool, you can save, categorize, and review transactions.
 ## Requirements
 
 - Java 11 or higher
-- Gradlegi
+- Gradle
