@@ -1,9 +1,12 @@
 package org.example;
 import java.io.FileWriter;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 
 public class BudgetManager {
@@ -14,7 +17,7 @@ public class BudgetManager {
         transactions.add(transaction);
 
         if (calculateBalance() > budgetLimit) {
-            System.out.println("Over het budget heen.");
+            System.out.println("Exceeded budget limit");
         }
     }
 
@@ -47,7 +50,7 @@ public class BudgetManager {
             if (t.getDescription().equals(description) && t.getAmount() == amount) {
                 transactions.remove(t);
             } else {
-                System.out.println("Transactie does not exist");
+                System.out.println("Transaction does not exist");
             }
         }
     }
@@ -62,15 +65,33 @@ public class BudgetManager {
                 writer.write(t.getDate() + " | " + t.getCategory() + " | " + t.getAmount() + " | " + t.getDescription());
                 writer.newLine();
             }
-            System.out.println("Transacties opgeslagen!");
+            System.out.println("Saved transactions");
         } catch (IOException e) {
-            System.err.println("Fout bij opslaan van transacties: " + e.getMessage());
+            System.err.println("Error saving transactions: " + e.getMessage());
         }
     }
 
     public void loadTransactions() {
-        for (Transaction t : transactions) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("transactions.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(" \\| ");
 
+                if (parts.length == 4) {
+                    LocalDate date = LocalDate.parse(parts[0].trim());
+                    String category = parts[1].trim();
+                    double amount = Double.parseDouble(parts[2].trim());
+                    String description = parts[3].trim();
+
+                    Transaction transaction = new Transaction(description, amount, category);
+                    transactions.add(transaction);
+                } else {
+                    System.out.println("Error in txt file");
+                }
+                System.out.println("Loaded transactions");
+            }
+        } catch (IOException e) {
+            System.err.println("Error loading transactions: " + e.getMessage());
         }
     }
 }

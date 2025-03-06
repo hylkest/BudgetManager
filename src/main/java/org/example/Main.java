@@ -10,10 +10,8 @@ public class Main {
         manager.addTransaction(tr1);
         manager.addTransaction(tr2);
 
-        manager.removeTransaction("Boodschappen", 10);
-
-        manager.printTransactions();
-
         manager.saveTransactions();
+        manager.loadTransactions();
+
     }
 }
