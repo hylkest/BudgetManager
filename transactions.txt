@@ -1,5 +1,2 @@
-2025-03-11 | Lifestyle | 10.0 | Boodschappen
-2025-03-11 | Overig | 10.0 | Test123
-2025-03-11 | Overig | 10.0 | Test123
-2025-03-11 | Overig | 102.0 | Test123
-2025-03-11 | Overig | 1012.0 | Test123
+49889979 | 2025-03-11 | Lifestyle | 10.0 | Boodschappen
+80795515 | 2025-03-11 | Overig | 10.0 | Test123

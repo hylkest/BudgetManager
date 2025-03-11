@@ -67,7 +67,7 @@ public class BudgetManager {
     public void saveTransactions() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("transactions.txt"))) {
             for (Transaction t : transactions) {
-                writer.write(t.getDate() + " | " + t.getCategory() + " | " + t.getAmount() + " | " + t.getDescription());
+                writer.write(t.getId() + " | " + t.getDate() + " | " + t.getCategory() + " | " + t.getAmount() + " | " + t.getDescription());
                 writer.newLine();
             }
             System.out.println("Saved transactions");
