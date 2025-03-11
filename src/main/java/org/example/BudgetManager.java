@@ -7,6 +7,9 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 
 public class BudgetManager {
@@ -22,6 +25,8 @@ public class BudgetManager {
     }
 
     public void printTransactions() {
+        transactions.sort(Comparator.comparing(Transaction::getAmount).reversed());
+
         for (Transaction t : transactions) {
             System.out.println(t);
         }
