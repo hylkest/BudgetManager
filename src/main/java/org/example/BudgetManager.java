@@ -81,12 +81,14 @@ public class BudgetManager {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(" \\| ");
+                System.out.println(parts);
 
                 if (parts.length == 4) {
-                    LocalDate date = LocalDate.parse(parts[0].trim());
-                    String category = parts[1].trim();
-                    double amount = Double.parseDouble(parts[2].trim());
-                    String description = parts[3].trim();
+                    String id =  parts[0].trim();
+                    LocalDate date = LocalDate.parse(parts[1].trim());
+                    String category = parts[2].trim();
+                    double amount = Double.parseDouble(parts[3].trim());
+                    String description = parts[4].trim();
 
                     Transaction transaction = new Transaction(description, amount, category);
                     transactions.add(transaction);
